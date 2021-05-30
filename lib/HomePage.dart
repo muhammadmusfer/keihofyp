@@ -190,13 +190,13 @@ class _HomePageState extends State<HomePage> {
                       height: 50.0,
                       width: 80.0,
                       decoration: BoxDecoration(
-                        color: Color(0xFFF4F6F7),
+                        color: Color(0xFFF9A825),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: IconButton(
                         icon: Icon(
                           Icons.list_alt_rounded,
-                          color: Color(0xFF2C3E50),
+                          color: Color(0xFFF4F6F7),
                           size: 35.0,
                         ),
                       ),
@@ -208,13 +208,13 @@ class _HomePageState extends State<HomePage> {
                       height: 50.0,
                       width: 80.0,
                       decoration: BoxDecoration(
-                        color: Color(0xFFF4F6F7),
+                        color: Color(0xFFF9A825),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: IconButton(
                         icon: Icon(
                           Icons.arrow_forward_outlined,
-                          color: Color(0xFF2C3E50),
+                          color: Color(0xFFF4F6F7),
                           size: 35.0,
                         ),
                       ),

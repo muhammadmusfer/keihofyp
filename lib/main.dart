@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keiho/DetailsScreen.dart';
 import 'package:keiho/HomePage.dart';
 
 void main() {
