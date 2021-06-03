@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:keiho/HomePage.dart';
 import 'alarm_list.dart';
@@ -112,7 +110,7 @@ Drawer kAppDrawer = Drawer(
           ),
           onTap: () {
             Navigator.push(
-                  (context) => ,
+              this context,
               MaterialPageRoute(
                 builder: (context) => AlarmList(),
               ),
