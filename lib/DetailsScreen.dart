@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'Constant.dart';
 
 int height = 500;
 DateTime myDate = DateTime.now();
@@ -19,108 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
       appBar: AppBar(
         title: Text('Detail Screen'),
       ),
-      drawer: Drawer(
-        child: Container(
-          color: Color(0xFFF7F9F9),
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: ListTile.divideTiles(
-                context: context,
-                color: Colors.black,
-                tiles: [
-                  DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: Color(0xFF37474f),
-                    ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Keiho',
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                '(Location Reminder)',
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 40.0,
-                          ),
-                          Icon(
-                            Icons.location_on_rounded,
-                            size: 35.0,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Home',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Color(0xFF1B2631),
-                      ),
-                    ),
-                    onTap: () {
-                      // Update the state of the app.
-                      // ...
-                    },
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Alarm List',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Color(0xFF1B2631),
-                      ),
-                    ),
-                    onTap: () {
-                      // Update the state of the app.
-                      // ...
-                    },
-                  ),
-                  ListTile(
-                    title: Text(
-                      'About',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Color(0xFF1B2631),
-                      ),
-                    ),
-                    onTap: () {
-                      // Update the state of the app.
-                      // ...
-                    },
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Exit',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Color(0xFF1B2631),
-                      ),
-                    ),
-                    onTap: () {
-                      // Update the state of the app.
-                      // ...
-                    },
-                  ),
-                  Divider(),
-                ]).toList(),
-          ),
-        ),
-      ),
+      drawer: kAppDrawer,
       body: ListView(
         children: [
           SizedBox(
@@ -140,10 +40,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                     child: Text(
                       'Select Location Mark Here',
-                      style: TextStyle(
-                        color: Color(0xFF212121),
-                        fontSize: 20.0,
-                      ),
+                      style: kLocationStyle,
                     ),
                   ),
                 ),
@@ -162,11 +59,7 @@ class _DetailScreenState extends State<DetailScreen> {
             children: [
               Text(
                 'Distance',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
-                  color: Color(0xFFF9A825),
-                ),
+                style: kDistanceStyle,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -182,18 +75,15 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   Text(
                     'm',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Color(0xFF8D8E98),
-                    ),
+                    style: kUnitDistance,
                   ),
                 ],
               ),
               SliderTheme(
                 data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: Colors.white,
+                  activeTrackColor: kWhiteColor,
                   inactiveTrackColor: Color(0xFF8D8E98),
-                  thumbColor: Color(0xFFFBC02D),
+                  thumbColor: kGoldenColor,
                   overlayColor: Color(0x29EB1555),
                   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
                   overlayShape: RoundSliderOverlayShape(overlayRadius: 10.0),
@@ -222,7 +112,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   width: MediaQuery.of(context).size.width / 1.3,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
-                    color: Color(0xFFd6d6d6),
+                    color: kWhiteColor,
                   ),
                   child: Center(
                     child: Text(
@@ -306,14 +196,11 @@ class _DetailScreenState extends State<DetailScreen> {
             onTap: () {},
             child: Container(
               height: 50,
-              color: Color(0xFFF9A825),
+              color: kGoldenColor,
               child: Center(
                 child: Text(
                   'Submit',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: kDistanceStyle,
                 ),
               ),
             ),
