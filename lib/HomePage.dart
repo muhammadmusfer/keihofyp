@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('HomePage'),
       ),
-      drawer: kAppDrawer,
+      drawer: kAppDrawer(context),
       body: SingleChildScrollView(
         child: Column(
           children: [

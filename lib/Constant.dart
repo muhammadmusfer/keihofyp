@@ -53,92 +53,94 @@ TextStyle kListTileStyle = TextStyle(
   color: Color(0xFF1B2631),
 );
 
-Drawer kAppDrawer = Drawer(
-  child: Container(
-    color: kWhiteColor,
-    child: ListView(
-      padding: EdgeInsets.zero,
-      children: ListTile.divideTiles(color: Colors.black, tiles: [
-        DrawerHeader(
-          decoration: BoxDecoration(
-            color: kDrawerHeaderBackground,
-          ),
-          child: Center(
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Keiho',
-                      style: kDrawerTitle,
-                    ),
-                    Text(
-                      '(Location Reminder)',
-                      style: kDrawerSubtitle,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 40.0,
-                ),
-                Icon(
-                  Icons.location_on_rounded,
-                  size: 35.0,
-                ),
-              ],
+Drawer kAppDrawer(BuildContext context) {
+  return Drawer(
+    child: Container(
+      color: kWhiteColor,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: ListTile.divideTiles(color: Colors.black, tiles: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: kDrawerHeaderBackground,
             ),
-          ),
-        ),
-        ListTile(
-          title: Text(
-            'Home',
-            style: TextStyle(
-              fontSize: 18.0,
-              color: Color(0xFF1B2631),
-            ),
-          ),
-          onTap: () {
-            // Update the state of the app.
-            // ...
-          },
-        ),
-        ListTile(
-          title: Text(
-            'Alarm List',
-            style: kListTileStyle,
-          ),
-          onTap: () {
-            Navigator.push(
-              this context,
-              MaterialPageRoute(
-                builder: (context) => AlarmList(),
+            child: Center(
+              child: Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Keiho',
+                        style: kDrawerTitle,
+                      ),
+                      Text(
+                        '(Location Reminder)',
+                        style: kDrawerSubtitle,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 40.0,
+                  ),
+                  Icon(
+                    Icons.location_on_rounded,
+                    size: 35.0,
+                  ),
+                ],
               ),
-            );
-          },
-        ),
-        ListTile(
-          title: Text(
-            'About',
-            style: kListTileStyle,
+            ),
           ),
-          onTap: () {
-            // Update the state of the app.
-            // ...
-          },
-        ),
-        ListTile(
-          title: Text(
-            'Exit',
-            style: kListTileStyle,
+          ListTile(
+            title: Text(
+              'Home',
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Color(0xFF1B2631),
+              ),
+            ),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
           ),
-          onTap: () {
-            // Update the state of the app.
-            // ...
-          },
-        ),
-        Divider(),
-      ]).toList(),
+          ListTile(
+            title: Text(
+              'Alarm List',
+              style: kListTileStyle,
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AlarmList(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Text(
+              'About',
+              style: kListTileStyle,
+            ),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Exit',
+              style: kListTileStyle,
+            ),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          Divider(),
+        ]).toList(),
+      ),
     ),
-  ),
-);
+  );
+}

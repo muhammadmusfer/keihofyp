@@ -20,7 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
       appBar: AppBar(
         title: Text('Detail Screen'),
       ),
-      drawer: kAppDrawer,
+      drawer: kAppDrawer(context),
       body: ListView(
         children: [
           SizedBox(
