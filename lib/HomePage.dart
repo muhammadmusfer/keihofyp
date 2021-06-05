@@ -2,6 +2,8 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keiho/Constant.dart';
+import 'package:keiho/DetailsScreen.dart';
+import 'package:keiho/Reminder_Details.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String title;
+  String description;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +23,50 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeTextFields(hintText: "Enter Your Title", label: "Title"),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: TextField(
+                style: kTextFieldStyle,
+                decoration: InputDecoration(
+                  hintText: "Enter Your Title",
+                  hintStyle: kHintStyle,
+                  labelText: "Title",
+                  labelStyle: kLabelStyle,
+                  filled: true,
+                  fillColor: kWhiteColor,
+                  border: InputBorder.none,
+                ),
+                onChanged: (text) {
+                  title = text;
+                },
+                obscureText: false,
+              ),
+            ),
+            //HomeTextFields(hintText: "Enter Your Title", label: "Title"),
             SizedBox(
               height: 30.0,
             ),
-            HomeTextFields(
-                hintText: "Enter Your Description", label: "Description"),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: TextField(
+                style: kTextFieldStyle,
+                decoration: InputDecoration(
+                  hintText: "Enter Your Description",
+                  hintStyle: kHintStyle,
+                  labelText: "Description",
+                  labelStyle: kLabelStyle,
+                  filled: true,
+                  fillColor: kWhiteColor,
+                  border: InputBorder.none,
+                ),
+                onChanged: (text) {
+                  description = text;
+                },
+                obscureText: false,
+              ),
+            ),
+            //HomeTextFields(
+            //  hintText: "Enter Your Description", label: "Description"),
             SizedBox(
               height: 50.0,
             ),
@@ -34,11 +76,56 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.bottomRight,
                 child: Column(
                   children: [
-                    ButtonContainer(Icons.list_alt_rounded),
+                    Container(
+                      height: 50.0,
+                      width: 80.0,
+                      decoration: BoxDecoration(
+                        color: kGoldenColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.list_alt_rounded,
+                          color: kWhiteColor,
+                          size: 35.0,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ReminderDetail(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    //ButtonContainer(Icons.list_alt_rounded),
                     SizedBox(
                       height: 30.0,
                     ),
-                    ButtonContainer(Icons.arrow_forward_outlined),
+                    Container(
+                      height: 50.0,
+                      width: 80.0,
+                      decoration: BoxDecoration(
+                        color: kGoldenColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_forward_outlined,
+                          color: kWhiteColor,
+                          size: 35.0,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => DetailScreen(
+                                  title: title, description: description),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    //ButtonContainer(Icons.arrow_forward_outlined),
                   ],
                 ),
               ),

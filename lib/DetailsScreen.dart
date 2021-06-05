@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'Constant.dart';
+import 'Reminder.dart';
 
 int height = 500;
 DateTime myDate = DateTime.now();
@@ -9,18 +10,31 @@ String dateStr =
 bool checkedValue = false;
 
 class DetailScreen extends StatefulWidget {
+  String title;
+  String description;
+  DetailScreen({this.title, this.description});
   @override
-  _DetailScreenState createState() => _DetailScreenState();
+  _DetailScreenState createState() =>
+      _DetailScreenState(title: title, description: description);
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  String title;
+  String description;
+  _DetailScreenState({this.title, this.description});
+  bool checkNotification = false;
+  bool checkAlarm = false;
+  String date = dateStr;
+  String distance;
+  String location = 'Select Location Mark Here';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Detail Screen'),
       ),
-      drawer: kAppDrawer(context),
+      drawer: kAppDrawer(this.context),
       body: ListView(
         children: [
           SizedBox(
@@ -39,7 +53,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                     child: Text(
-                      'Select Location Mark Here',
+                      location,
                       style: kLocationStyle,
                     ),
                   ),
@@ -95,6 +109,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   onChanged: (double newValue) {
                     setState(() {
                       height = newValue.round();
+                      distance = height.toString();
                     });
                   },
                 ),
@@ -158,11 +173,11 @@ class _DetailScreenState extends State<DetailScreen> {
             child: CheckboxListTile(
               activeColor: Colors.transparent,
               title: Text("Notification"),
-              value: checkedValue,
+              value: checkNotification,
               onChanged: (newValue) {
                 setState(() {
-                  checkedValue = newValue;
-                  print(checkedValue);
+                  checkNotification = newValue;
+                  print(checkNotification);
                 });
               },
               secondary: const Icon(
@@ -176,11 +191,11 @@ class _DetailScreenState extends State<DetailScreen> {
             child: CheckboxListTile(
               activeColor: Colors.transparent,
               title: Text("Alarm"),
-              value: checkedValue,
+              value: checkAlarm,
               onChanged: (newValue) {
                 setState(() {
-                  checkedValue = newValue;
-                  print(checkedValue);
+                  checkAlarm = newValue;
+                  print(checkAlarm);
                 });
               },
               secondary: const Icon(
@@ -193,7 +208,17 @@ class _DetailScreenState extends State<DetailScreen> {
             height: 30,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Reminder obj = Reminder(
+                  title: title,
+                  description: description,
+                  checkAlarm: checkAlarm,
+                  checkNotification: checkNotification,
+                  location: location,
+                  distance: distance,
+                  date: date);
+              print(obj);
+            },
             child: Container(
               height: 50,
               color: kGoldenColor,
